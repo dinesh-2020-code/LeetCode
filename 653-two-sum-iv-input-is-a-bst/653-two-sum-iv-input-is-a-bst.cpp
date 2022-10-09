@@ -11,7 +11,42 @@
  */
 class Solution {
 public:
+    //search a given node in BST
+    bool search(TreeNode *root, int item, TreeNode *check) {
+        if (root == nullptr)
+            return false; 
+        if (item == root -> val && root != check)
+            return true; 
+        else if (item < root -> val) 
+            return search(root -> left, item, check);
+        else 
+            return search(root -> right, item, check); 
+        
+    }
+    bool inorder(TreeNode* root, int k, TreeNode *temp) {
+        
+        if (root == nullptr)
+            return false; 
+        
+        bool l =  inorder(root -> left, k, temp); 
+        
+        if (search(temp, (k - root -> val), root)) {
+            return true; 
+        }
+        bool r=  inorder(root -> right, k, temp); 
+        return l or r;
+        
+    }
+    bool findTarget(TreeNode* root, int k) {
+        
+        TreeNode *temp = root; 
+        
+        return inorder(root, k, temp); 
+        
+    }
     
+    /*
+    //inorder traversal
     void solve(TreeNode* root, int k, vector<int> &t) {
         if (root == nullptr)
             return; 
@@ -39,4 +74,5 @@ public:
         return false; 
         
     }
+    */
 };
