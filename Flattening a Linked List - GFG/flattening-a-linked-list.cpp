@@ -65,18 +65,14 @@ public:
             }
         }
         // if 'a' linked list is not null then copy all the elements of 'a ' LL to bottom of 'temp' Lb
-        while (a !=  nullptr) {
+        if (a !=  nullptr) {
             temp  -> bottom = a;
-            temp = temp -> bottom ;
-            a = a -> bottom; 
+           
         }
-        
-        while (b != nullptr) {
+        else
             temp  -> bottom = b;
-            temp = temp -> bottom ;
-            b = b -> bottom; 
-        }
-        res -> bottom -> next = nullptr; 
+            
+        
         return res -> bottom ; 
     }
     Node *flatten(Node *root)
