@@ -17,7 +17,7 @@ class Solution {
             if (A[i] + 1 <= 9) 
                 return (i + 1);
         }
-        return N;
+        // return N;
     }
 };
 
