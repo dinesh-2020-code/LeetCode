@@ -24,9 +24,6 @@ class Solution
         }
         //sorted according to finish time
         sort(vp.begin(), vp.end(), cmp);
-        // for (auto it : vp) {
-        //     cout << it.first << ": " << it.second << endl; 
-        // }
         int activity_count = 1; 
         int i = 0; //first activity is always selected
         for (int j = 1; j < n; j++) {
