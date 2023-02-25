@@ -19,10 +19,9 @@ class Solution {
         int ans = 0; 
         int j = 0, i = 0; 
         for (; i < T.length(); ) {
-            // cout << S[i] << " " << T[j] << endl;; 
+            
             if (isAlphabet(T[i]) && S[j] != T[i])
             {
-                // cout << S[i] << " " << T[j] << endl;; 
                 return ans; 
             }
             if (T[i] >= '0' && T[i] <= '9') {
@@ -35,8 +34,6 @@ class Solution {
                 int nums = stoi(num);
                 j += nums;
                 
-                // cout << nums << " "; 
-                // i++; 
             }
             else {
                 i++; j++; 
@@ -45,7 +42,6 @@ class Solution {
         if (i == T.length() && j == S.length())
             ans = 1; 
             
-        // cout << j << endl;     
         return ans; 
         
         /*
