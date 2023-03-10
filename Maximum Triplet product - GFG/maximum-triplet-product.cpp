@@ -13,14 +13,60 @@ class Solution {
   public:
     long long maxTripletProduct(long long arr[], int n)
     {
-    	sort(arr, arr + n);
-    	ll p1 = arr[0] * arr[1] * arr[n-1];
-    	ll p2 = arr[0] * arr[n-1] * arr[n-2] 
-    	; 
-    	ll p3 = arr[n-1] * arr[n-3] * arr[n-2]; 
+    	ll maxi = -1, secondMax = -1, thirdMax = -1; 
+    	ll mini = -1, secondMin = -1; 
     	
-    	return max(p1, max(p2, p3)); 
+    	for (int i = 0; i < n; i++) {
+    	    if (maxi == -1) {
+    	        maxi = i; 
+    	    }
+    	    else {
+    	        if (arr[i] > arr[maxi])
+    	            maxi = i; 
+    	    }
+    	}
     	
+    	for (int i = 0; i < n; i++ ) {
+    	    if (i != maxi && secondMax == -1) {
+    	        secondMax = i; 
+    	    }
+    	    else if (i != maxi && arr[i] > arr[secondMax]) {
+    	        secondMax = i; 
+    	    }
+    	    
+    	}
+    	
+    	//thirdMax
+    	for (int i = 0; i < n; i++) {
+    	    if (i != maxi && i != secondMax && thirdMax == -1) 
+    	        thirdMax = i; 
+    	    else if (i != maxi && i != secondMax && arr[i] > arr[thirdMax])
+    	        thirdMax = i; 
+    	}
+    	
+    // 	cout << maxi << " " << secondMax << " " << thirdMax << endl; 
+    	
+    	//mini 
+    	for (int i = 0; i < n; i++) {
+    	    if (mini == -1) 
+    	        mini = i; 
+    	   else if (arr[i] < arr[mini])
+    	        mini = i; 
+    	}
+    	//secondMin
+    	for (int i = 0 ; i < n; i++) {
+    	    if (i != mini) {
+    	        if (secondMin == -1)
+    	            secondMin = i; 
+    	       else if (arr[i] < arr[secondMin])
+    	            secondMin = i ;
+    	    }
+    	}
+    	
+    	ll p1 = arr[maxi] * arr[mini] * arr[secondMin]; 
+    	ll p2 = arr[maxi] * arr[secondMax] * arr[thirdMax]; 
+    	
+    	return max(p1, p2); 
     }
 };
 
