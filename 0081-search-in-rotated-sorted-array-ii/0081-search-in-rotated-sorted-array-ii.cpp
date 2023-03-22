@@ -10,7 +10,7 @@ public:
                 return true; 
             
             if (nums[low] == nums[mid] && nums[high] == nums[mid]) 
-                low++, high--; 
+                low++;
     
             
             else if (nums[low] <= nums[mid]) {  //left part is sorted
