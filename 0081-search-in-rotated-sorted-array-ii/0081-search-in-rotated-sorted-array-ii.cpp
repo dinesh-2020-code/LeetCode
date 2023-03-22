@@ -9,8 +9,8 @@ public:
             if (nums[mid] == target)
                 return true; 
             
-            if (nums[low] == nums[mid] && nums[high] == nums[mid]) 
-                low++;
+            else if (nums[low] == nums[mid] && nums[high] == nums[mid]) 
+                low++, high--; 
     
             
             else if (nums[low] <= nums[mid]) {  //left part is sorted
