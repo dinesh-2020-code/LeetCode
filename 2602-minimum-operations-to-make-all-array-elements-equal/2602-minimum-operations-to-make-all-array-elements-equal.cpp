@@ -16,7 +16,7 @@ public:
         for (long long int j = 0; j < m; j++) {
             long long int x = (long long)queries[j];
             
-            int i = lower_bound(nums.begin(), nums.end(), x) - nums.begin();
+            int i = lower_bound(nums.begin(), nums.end(), x) - nums.begin();  // returns index of element >= x
             
             long long largerSum = (i-1 >= 0) ? ( prefSum[n-1] - prefSum[i-1]) : prefSum[n-1]; 
             long long smallerSum = (i-1 >= 0)? prefSum[i-1]: 0; 
