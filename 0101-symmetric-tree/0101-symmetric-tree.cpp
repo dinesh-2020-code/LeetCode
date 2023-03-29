@@ -16,30 +16,34 @@ public:
         if (root == NULL)
             return true; 
         
-        isValid = true; 
-        dfs(root -> left, root -> right); 
-        return isValid; 
+        
+        return dfs(root -> left, root -> right); 
+        
         
     }
-    void dfs(TreeNode *left, TreeNode *right) {
+    bool dfs(TreeNode *left, TreeNode *right) {
         //base case
         if (left == NULL && right == NULL)
-            return; 
+            return true; 
         
         if (left == NULL || right == NULL)
         {
-            isValid = false; 
-            return ; 
+             
+            return false; 
         }
         if (left -> val != right -> val)
         {
-            isValid = false; 
-            return; 
+             
+            return false; 
         }
         
-        dfs(left -> left, right -> right); 
-        dfs(left -> right, right -> left); 
+        return (dfs(left -> left, right -> right) && dfs(left -> right, right -> left)); 
         
     }
+    
+    /*
+        Time COmplexity: O(log N)
+        Aux Space: O(H), H is the height of the tree
+    */
     
 };
