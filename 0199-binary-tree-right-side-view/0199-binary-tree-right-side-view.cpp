@@ -35,7 +35,7 @@ public:
         
         /*
             Time Complexity: O(N)
-            Aux Space: O(N)
+            Aux Space: O(H)
         */
     }
 };
