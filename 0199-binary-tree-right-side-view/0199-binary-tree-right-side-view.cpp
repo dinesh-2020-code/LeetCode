@@ -11,15 +11,18 @@
  */
 class Solution {
 private: 
+    // Preorder traversal
     void dfs(TreeNode* root, vector<int> &ans, int level) {
         if (root == NULL)
             return; 
         
-        if (ans.size() == level)
+        if (level == ans.size())
             ans.push_back(root -> val); 
+        else 
+            ans[level] = root -> val; 
         
-        dfs(root -> right, ans, level + 1); 
         dfs(root -> left, ans, level + 1); 
+        dfs(root -> right, ans, level + 1); 
     }
 public:
     
