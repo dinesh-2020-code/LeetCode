@@ -28,9 +28,9 @@ public:
                 temp.clear(); 
             }
         }
-        if (j < n) {
+        
             ans.push_back({intervals[j][0], end});
-        }
+        
         return ans; 
     }
 };
