@@ -15,24 +15,26 @@ private:
     int answer = 0; 
     //O(n) time
     //O(h) aux space
-    void dfs(TreeNode *root, int currVal) {
+    int dfs(TreeNode *root, int currVal) {
         if (root == nullptr)
-            return ;
+            return 0;
         
-        dfs(root -> left, (currVal * 10 + root -> val));
+       
         if (root -> left == nullptr && root -> right == nullptr) 
         {
-            answer += (currVal * 10 + root -> val); 
-            return ;
+            return (currVal * 10 + root -> val); 
+            
         }
+        int case1 = dfs(root -> left, (currVal * 10 + root -> val));
         
+        int case2 = dfs(root -> right, (currVal * 10 + root -> val));
         
-        dfs(root -> right, (currVal * 10 + root -> val));
+        return (case1 + case2); 
     }
 public: 
     int sumNumbers(TreeNode* root) {
         
-        dfs(root, 0);
-        return answer; 
+        return dfs(root, 0);
+        
     }
 };
