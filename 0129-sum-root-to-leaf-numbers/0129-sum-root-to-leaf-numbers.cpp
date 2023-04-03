@@ -10,22 +10,26 @@
  * };
  */
 class Solution {
-    int answer = 0; 
-public:
     
+private: 
+    int answer = 0; 
+    //O(n) time
+    //O(h) aux space
     void dfs(TreeNode *root, int currVal) {
         if (root == nullptr)
             return ;
-    
+        
+        dfs(root -> left, (currVal * 10 + root -> val));
         if (root -> left == nullptr && root -> right == nullptr) 
         {
             answer += (currVal * 10 + root -> val); 
             return ;
         }
         
-        dfs(root -> left, (currVal * 10 + root -> val));
+        
         dfs(root -> right, (currVal * 10 + root -> val));
     }
+public: 
     int sumNumbers(TreeNode* root) {
         
         dfs(root, 0);
