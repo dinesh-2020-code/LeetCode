@@ -10,25 +10,34 @@
  * };
  */
 class Solution {
-    int answer = 0; 
-    void dfs(TreeNode * root, int currVal) {
-        if (root == nullptr)
-            return ;
-        
-        if (root -> left == nullptr && root -> right == nullptr ) {
-            answer += (currVal); 
-            return ; 
-        }
-        if (root -> left != NULL)
-            dfs(root -> left, currVal * 10 + root -> left -> val); 
-        if (root -> right != NULL)
-            dfs(root -> right, currVal * 10 + root -> right -> val); 
-    }
 public:
     int sumNumbers(TreeNode* root) {
         
-        dfs(root, root -> val); 
-        return answer; 
+        queue<TreeNode*> q; 
+        queue<int> value; 
         
+        q.push(root); 
+        value.push(0); 
+        
+        int ans = 0; 
+        while (!q.empty()) {
+            TreeNode* curr = q.front(); 
+            q.pop(); 
+            int currVal = value.front(); 
+            value.pop(); 
+            
+            if ((curr -> left == NULL && curr -> right == NULL)) {
+                ans += (currVal * 10 + curr -> val); 
+            }
+            if (curr -> left) {
+                q.push(curr -> left);
+                value.push(currVal * 10 + curr -> val); 
+            }
+            if (curr -> right) {
+                q.push(curr -> right) ;
+                value.push(currVal * 10 + curr -> val); 
+            }
+        }
+        return ans; 
     }
 };
