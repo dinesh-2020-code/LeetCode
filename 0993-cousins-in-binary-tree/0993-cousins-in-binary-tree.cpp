@@ -14,37 +14,51 @@ private:
     int level_x, level_y; 
     TreeNode *parent_x, *parent_y; 
     
-    void dfs(TreeNode* root, int lvl, int x, int y, TreeNode * parent) {
-        if (root == NULL)
-        {
-            return; 
-        }
-        dfs(root -> left, lvl + 1, x, y, root); 
-        if (root -> val == x) {
-            level_x = lvl; 
-            parent_x = parent; 
-            return;
-        }
-        if (root -> val == y) {
-            level_y = lvl; 
-            parent_y = parent; 
-            return; 
-        }
-        
-        
-        dfs(root -> right, lvl + 1, x, y, root); 
-        
-    }
+    
 public:
     bool isCousins(TreeNode* root, int x, int y) {
         if (root == nullptr)
             return false; 
         
-        level_x = level_y = 0; 
-        parent_x = parent_y = NULL; 
+        queue<TreeNode*> q; 
         
-        dfs(root, 0, x, y, NULL); 
-        
-        return level_x == level_y && parent_x != parent_y; 
+        q.push(root); 
+        while (!q.empty()) {
+            int size = q.size(); 
+            
+            bool xFound = false, yFound = false; 
+            
+            for (int i = 0; i < size; i++) {
+                TreeNode * curr = q.front(); 
+                q.pop(); 
+                
+                if (curr -> left != NULL && curr -> right != NULL) {
+                    if (curr -> left -> val == x && curr -> right -> val == y)
+                        return false; 
+                    
+                    else if (curr -> left -> val == y && curr -> right -> val == x)
+                        return false; 
+                    
+                    
+                }
+                if (curr -> left != NULL)
+                    q.push(curr -> left); 
+                
+                if (curr -> right != NULL) 
+                    q.push(curr -> right); 
+                
+                if (curr -> val == x)
+                    xFound = true; 
+                
+                if (curr -> val == y)
+                    yFound = true; 
+                
+                if (xFound == true && yFound == true)
+                    return true; 
+                
+            }
+                        
+        }
+        return false; 
     }
 };
