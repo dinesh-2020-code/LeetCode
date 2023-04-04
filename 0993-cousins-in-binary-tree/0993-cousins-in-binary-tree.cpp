@@ -22,10 +22,12 @@ private:
         if (root -> val == x) {
             level_x = lvl; 
             parent_x = parent; 
+            return;
         }
         if (root -> val == y) {
             level_y = lvl; 
             parent_y = parent; 
+            return; 
         }
         
         dfs(root -> left, lvl + 1, x, y, root); 
