@@ -19,6 +19,7 @@ private:
         {
             return; 
         }
+        dfs(root -> left, lvl + 1, x, y, root); 
         if (root -> val == x) {
             level_x = lvl; 
             parent_x = parent; 
@@ -30,7 +31,7 @@ private:
             return; 
         }
         
-        dfs(root -> left, lvl + 1, x, y, root); 
+        
         dfs(root -> right, lvl + 1, x, y, root); 
         
     }
