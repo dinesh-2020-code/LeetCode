@@ -22,11 +22,9 @@ private:
         if (prev != NULL && prev -> val > root -> val) {
             if (temp1 == NULL) {
                 temp1 = prev; 
-                temp2 = root; 
+               
             }
-            else {
-                temp2 = root; 
-            }
+            temp2 = root; 
         }
         prev = root; 
         inorder(root -> right); 
