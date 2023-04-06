@@ -9,25 +9,29 @@
  */
 
 class Solution {
-    TreeNode* dfs(TreeNode *root, TreeNode* p, TreeNode *q) {
-        if (root == NULL)
-            return root; 
-        
-        if (root -> val > p -> val and root -> val > q -> val) {
-            return dfs(root -> left, p, q); 
-        }
-        else if (root -> val < p -> val and root -> val < q -> val) {
-            return dfs(root -> right, p, q); 
-        }
-        else {
-            return root; 
-        }
-    }
+    
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         if (root == NULL)
             return NULL; 
         
-        return dfs(root, p, q); 
+        
+        while (true) {
+            if (root -> val > p -> val && root -> val > q -> val) {
+                root = root -> left; 
+            }
+            else if (root -> val < p -> val && root -> val < q -> val) {
+                root = root -> right; 
+            }
+            else {
+                return root; 
+            }
+        }
     }
+    
+    
+    /*
+        Time: O(H)
+        Aux space: O(1), where H is the hegiht of the tree
+    */
 };
