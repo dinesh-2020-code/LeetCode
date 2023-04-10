@@ -11,10 +11,9 @@ class Solution {
 private: 
     vector<int> v;
     vector<int> pPath, qPath; 
-    bool found; 
-    
+     
     void dfs(TreeNode * root, TreeNode *p, TreeNode *q) {
-        if (root == NULL  || found == true)
+        if (root == NULL)
             return; 
         
         v.push_back(root -> val); 
@@ -46,11 +45,10 @@ public:
         if (root == NULL)
             return root; 
         
-        found = false; 
         dfs(root, p, q); 
         
-        print(pPath); 
-        print(qPath); 
+        // print(pPath); 
+        // print(qPath); 
         int i = 0, j = 0;
         for (; i < pPath.size() && j < qPath.size(); ) {
             if (pPath[i] != qPath[j]) {
