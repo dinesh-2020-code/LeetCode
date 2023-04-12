@@ -17,22 +17,26 @@ public:
 */
 
 class Solution {
-private: 
-    void dfs(Node *left, Node *right) {
-        if (left == NULL)
-            return; 
-        
-        left -> next = right; 
-        dfs(left -> left, left -> right); 
-        dfs(left -> right, right -> left);
-        dfs(right -> left, right -> right);
-    }
 public:
     Node* connect(Node* root) {
         if (root == NULL)
             return root; 
         
-        dfs(root -> left, root -> right); 
+        Node * left = root; 
+        
+        while (left -> left != NULL) {
+            Node *curr = left; 
+            while (curr != NULL) {
+                curr -> left -> next = curr -> right; 
+                
+                if (curr -> next != nullptr) {
+                    curr -> right -> next = curr -> next -> left; 
+                }
+                curr = curr -> next; 
+            }
+            left = left -> left;
+        }
+        
         return root; 
     }
 };
