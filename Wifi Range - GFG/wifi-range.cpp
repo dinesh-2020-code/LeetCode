@@ -20,13 +20,13 @@ class Solution{
                 mark[i] = 1; 
                 int temp = X; 
                 int j = i - 1, k = i + 1; 
-                while (j >= 0 && temp--) {
+                while (j >= 0 && temp-- && S[j] == '0') {
                     mark[j--] = 1; 
                     
                 }
                 
                 temp = X; 
-                while  (k < N && temp-- ) {
+                while  (k < N && temp-- && S[k] == '0') {
                     mark[k++] = 1; 
                 }
                 i++;
