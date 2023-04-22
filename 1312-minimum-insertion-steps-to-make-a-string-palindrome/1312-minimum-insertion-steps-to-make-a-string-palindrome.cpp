@@ -1,5 +1,6 @@
 class Solution {
 private: 
+    // memoisation :
     int lcs(string s1, string s2, int m, int n, vector<vector<int>> &dp) {
         
         if (m == 0 || n == 0) {
@@ -20,6 +21,7 @@ private:
 public:
     int minInsertions(string s) {
         int n = s.length(); 
+        // tabulation :
         vector<vector<int>> dp(n + 1, vector<int>(n + 1, 0)); 
         string rev = s;
         reverse(rev.begin(), rev.end());
