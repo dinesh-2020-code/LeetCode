@@ -21,21 +21,13 @@ public:
          
         vector<int> adj[numCourses];
         vector<int> indegrees(numCourses, 0); 
-        // unordered_map<int, vector<int>> adj; 
-        
         for (int i = 0; i < prerequisites.size(); i++) 
         {
             int u = prerequisites[i][1]; 
             int v = prerequisites[i][0]; 
             //u -> v is an edge
             indegrees[v]++; 
-            
-//             if (adj.find(u) == adj.end()) {
-//                 vector<int> temp; 
-//                 adj.insert(make_pair(u, temp)); 
-//             }
-//             // adj[u].push_back(v); 
-//             adj.find(u) -> second.push_back(v); 
+          
             adj[u].push_back(v); 
         
         }
