@@ -38,7 +38,7 @@ public:
         for (auto i : sweetness) 
             sum += i; 
             
-        int low = 0, high = sum + 1;
+        int low = 0, high = sum+1;   // ++++++++------
         
         while (high - low > 1) {
             int mid = low + (high - low) / 2; 
@@ -51,6 +51,12 @@ public:
             }
         }
         return low; 
+        
+        /*
+            6 0
+            4 1 3 2 10 20
+            Output: 40
+        */
     }
 };
 
